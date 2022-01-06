@@ -34,6 +34,7 @@ call plug#begin()
   " Copilot
   Plug 'github/copilot.vim'
 
+	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular']
 
@@ -43,6 +44,12 @@ call plug#begin()
 
 	" Terminal
 	Plug 'akinsho/toggleterm.nvim'
+
+	" Go lang
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+	" LSP
+	Plug 'prabirshrestha/vim-lsp'
 call plug#end()
 
 lua require('terminal')
