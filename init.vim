@@ -21,6 +21,7 @@ call plug#begin()
 
 	highlight VertSplit ctermbg=NONE
 	highlight VertSplit ctermfg=NONE
+	highlight VertSplit cterm=NONE
 
   " Tabline
   Plug 'kdheepak/tabline.nvim'
@@ -50,8 +51,32 @@ call plug#begin()
 
 	" LSP
 	Plug 'prabirshrestha/vim-lsp'
+
+	" Auto close pairs
+	Plug('cohama/lexima.vim')
 call plug#end()
 
 lua require('terminal')
 
 colorscheme badwolf
+
+" Line numbers
+set relativenumber
+
+" Mouse support
+set mouse=a
+
+set fillchars+=vert:\ 
+
+" Remap jj to escape
+imap jj <Esc>
+
+" Save file after each edit
+inoremap <Esc> <Esc>:w<CR>
+inoremap jj <Esc>:w<CR>
+
+" Switch buffers with tab
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+
+
