@@ -39,6 +39,44 @@ call plug#begin()
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular']
 
+	Plug 'natebosch/vim-lsc'
+	let g:lsc_server_commands = {
+\  "go": {
+\    "command": "gopls serve",
+\    "log_level": -1,
+\    "suppress_stderr": v:true,
+\  },
+\}
+
+  Plug 'prabirshrestha/vim-lsp'
+	augroup LspGo
+   au!
+  	autocmd User lsp_setup call lsp#register_server({
+    	  \ 'name': 'go-lang',
+      	\ 'cmd': {server_info->['gopls']},
+      	\ 'whitelist': ['go'],
+      	\ })
+	  autocmd FileType go setlocal omnifunc=lsp#complete
+  	autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
+  	"autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
+  	"autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
+	augroup END
+
+"	Plug 'dense-analysis/ale'
+"let g:ale_linters = {
+"  \ 'go': ['gopls'],
+"  \}
+
+	"Plug 'autozimu/LanguageClient-neovim', {
+   " \ 'branch': 'next',
+  "  \ 'do': 'bash install.sh',
+  "  \ }
+
+" (Optional) Multi-entry selection UI.
+"Plug 'junegunn/fzf'
+
+
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'nvim-lua/plenary.nvim'
@@ -46,14 +84,17 @@ call plug#begin()
 	" Terminal
 	Plug 'akinsho/toggleterm.nvim'
 
-	" Go lang
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 	" LSP
 	Plug 'prabirshrestha/vim-lsp'
 
 	" Auto close pairs
 	Plug('cohama/lexima.vim')
+
+	" Emojis
+	Plug 'junegunn/vim-emoji'
+
+	" LSP Colors
+	Plug 'folke/lsp-colors.nvim'
 call plug#end()
 
 lua require('terminal')
@@ -79,4 +120,12 @@ inoremap jj <Esc>:w<CR>
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
-
+" Navigation in insert mode
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
