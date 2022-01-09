@@ -70,10 +70,10 @@ let s:bwc.lightgravel    = ['998f84', 245]
 let s:bwc.gravel         = ['857f78', 243]
 let s:bwc.mediumgravel   = ['666462', 241]
 let s:bwc.deepgravel     = ['45413b', 238]
-let s:bwc.deepergravel   = ['35322d', 236]
-let s:bwc.darkgravel     = ['242321', 235]
-let s:bwc.blackgravel    = ['1c1b1a', 233]
-let s:bwc.blackestgravel = ['141413', 232]
+let s:bwc.deepergravel   = ['000000', 236]
+let s:bwc.darkgravel     = ['000000', 235]
+let s:bwc.blackgravel    = ['000000', 233]
+let s:bwc.blackestgravel = ['000000', 232]
 
 " A color sampled from a highlight in a photo of a glass of Dale's Pale Ale on
 " my desk.

@@ -39,6 +39,9 @@ call plug#begin()
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular']
 
+	" Add missing imports on save (GO)
+	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
 	Plug 'natebosch/vim-lsc'
 	let g:lsc_server_commands = {
 \  "go": {
@@ -48,32 +51,18 @@ call plug#begin()
 \  },
 \}
 
-  Plug 'prabirshrestha/vim-lsp'
-	augroup LspGo
-   au!
-  	autocmd User lsp_setup call lsp#register_server({
-    	  \ 'name': 'go-lang',
-      	\ 'cmd': {server_info->['gopls']},
-      	\ 'whitelist': ['go'],
-      	\ })
-	  autocmd FileType go setlocal omnifunc=lsp#complete
-  	autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
-  	"autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
-  	"autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
-	augroup END
+	Plug 'dense-analysis/ale'
+let g:ale_linters = {
+  \ 'go': ['gopls'],
+  \}
 
-"	Plug 'dense-analysis/ale'
-"let g:ale_linters = {
-"  \ 'go': ['gopls'],
-"  \}
+	Plug 'autozimu/LanguageClient-neovim', {
+   \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
-	"Plug 'autozimu/LanguageClient-neovim', {
-   " \ 'branch': 'next',
-  "  \ 'do': 'bash install.sh',
-  "  \ }
-
-" (Optional) Multi-entry selection UI.
-"Plug 'junegunn/fzf'
+  " (Optional) Multi-entry selection UI.
+	Plug 'junegunn/fzf'
 
 
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }

@@ -22,5 +22,8 @@
         "usePlaceholders": true
       }
     }
+  },
+  "go.goplsOptions": {
+    "completeUnimported": true
   }
 }
