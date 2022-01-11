@@ -84,6 +84,10 @@ let g:ale_linters = {
 
 	" LSP Colors
 	Plug 'folke/lsp-colors.nvim'
+
+	" Tagbar
+	Plug 'mhinz/vim-tagbar'
+
 call plug#end()
 
 lua require('terminal')
@@ -118,3 +122,16 @@ cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
+
+" Transparency (or blackness)
+"hi Normal guibg=NONE ctermbg=NONE
+"hi NonText ctermbg=none 
+"hi Normal guibg=NONE ctermbg=NONE
+
+" Speed up VIM
+set timeoutlen=1000
+set ttimeoutlen=0
+"set maptimeout=0
+
+" Map ENTER to insert mode
+nmap <C-m> <Esc>i
