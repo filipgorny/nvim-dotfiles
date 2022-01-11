@@ -97,14 +97,12 @@ call plug#begin()
 
 	" Emojis
 	Plug 'junegunn/vim-emoji'
-
-	" Colors
-	Plug 'srcery-colors/srcery-vim'
 call plug#end()
 
 lua require('terminal')
 
-colorscheme srcery
+set background=dark
+colorscheme badwolf
 
 " Line numbers
 set relativenumber
@@ -134,3 +132,6 @@ cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
+
+" Show mode by cursor line color
+autocmd InsertEnter,InsertLeave * set cul!
