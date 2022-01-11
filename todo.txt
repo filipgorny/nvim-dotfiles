@@ -1,0 +1,2 @@
+- tab for tabs navigation
+- merging tabs into one wits split window

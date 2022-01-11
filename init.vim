@@ -33,7 +33,7 @@ call plug#begin()
   Plug 'neovim/nvim-lspconfig'
 
   " Copilot
-  Plug 'github/copilot.vim'
+  " Plug 'github/copilot.vim'
 
 	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -42,39 +42,13 @@ call plug#begin()
 	" Add missing imports on save (GO)
 	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
-	Plug 'natebosch/vim-lsc'
-	let g:lsc_server_commands = {
-\  "go": {
-\    "command": "gopls serve",
-\    "log_level": -1,
-\    "suppress_stderr": v:true,
-\  },
-\}
-
-	Plug 'dense-analysis/ale'
-let g:ale_linters = {
-  \ 'go': ['gopls'],
-  \}
-
-	Plug 'autozimu/LanguageClient-neovim', {
-   \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-  " (Optional) Multi-entry selection UI.
-	Plug 'junegunn/fzf'
-
-
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-	Plug 'mfussenegger/nvim-dap'
-	Plug 'nvim-lua/plenary.nvim'
+	" Prettier format on save
+	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+	vmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
 
 	" Terminal
 	Plug 'akinsho/toggleterm.nvim'
-
-	" LSP
-	Plug 'prabirshrestha/vim-lsp'
 
 	" Auto close pairs
 	Plug('cohama/lexima.vim')
@@ -87,11 +61,11 @@ let g:ale_linters = {
 
 	" Tagbar
 	Plug 'mhinz/vim-tagbar'
-
 call plug#end()
 
 lua require('terminal')
 
+set background=dark
 colorscheme badwolf
 
 " Line numbers
@@ -135,3 +109,17 @@ set ttimeoutlen=0
 
 " Map ENTER to insert mode
 nmap <C-m> <Esc>i
+
+" Show mode by cursor line color
+autocmd InsertEnter,InsertLeave * set cul!
+
+" Opn file explorer in new tab
+nnoremap we <Esc>:Texplore<CR>
+inoremap we <Esc>:Texplore<CR>
+cnoremap we <Esc>:Texplore<CR>
+
+" Close buffer with qq
+nnoremap qq <Esc>:q<CR>
+inoremap qq <Esc>:q<CR>
+cnoremap qq <Esc>:q<CR>
+
