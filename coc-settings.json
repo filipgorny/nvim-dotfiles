@@ -22,5 +22,16 @@
         "usePlaceholders": true
       }
     }
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "go",
+    "html",
+    "json",
+    "scss",
+    "typescript",
+    "yaml"
+  ]
 }

@@ -39,6 +39,11 @@ call plug#begin()
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular']
 
+	" Prettier
+	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+	vmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
+
 	Plug 'natebosch/vim-lsc'
 	let g:lsc_server_commands = {
 \  "go": {
@@ -93,13 +98,13 @@ call plug#begin()
 	" Emojis
 	Plug 'junegunn/vim-emoji'
 
-	" LSP Colors
-	Plug 'folke/lsp-colors.nvim'
+	" Colors
+	Plug 'srcery-colors/srcery-vim'
 call plug#end()
 
 lua require('terminal')
 
-colorscheme badwolf
+colorscheme srcery
 
 " Line numbers
 set relativenumber
