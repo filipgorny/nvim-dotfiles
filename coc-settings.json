@@ -4,14 +4,6 @@
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
   "diagnostic.checkCurrentLine": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "html",
-    "json",
-    "css",
-    "scss",
-    "go"
-  ],
   "coc.preferences.hoverTarget": "float",
   "languageserver": {
     "golang": {
@@ -25,5 +17,16 @@
   },
   "go.goplsOptions": {
     "completeUnimported": true
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "go",
+    "html",
+    "json",
+    "scss",
+    "typescript",
+    "yaml"
+  ]
 }

@@ -25,15 +25,17 @@ call plug#begin()
 
   " Tabline
   Plug 'kdheepak/tabline.nvim'
-  Plug 'vim-airline/vim-airline'
-  
+
+	" Status bar
+  Plug 'powerline/powerline'
+
   " Ecma support
   Plug 'pangloss/vim-javascript'    " JavaScript support
   Plug 'leafgarland/typescript-vim' " TypeScript syntax
   Plug 'neovim/nvim-lspconfig'
 
   " Copilot
-  Plug 'github/copilot.vim'
+  " Plug 'github/copilot.vim'
 
 	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -42,39 +44,13 @@ call plug#begin()
 	" Add missing imports on save (GO)
 	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
-	Plug 'natebosch/vim-lsc'
-	let g:lsc_server_commands = {
-\  "go": {
-\    "command": "gopls serve",
-\    "log_level": -1,
-\    "suppress_stderr": v:true,
-\  },
-\}
-
-	Plug 'dense-analysis/ale'
-let g:ale_linters = {
-  \ 'go': ['gopls'],
-  \}
-
-	Plug 'autozimu/LanguageClient-neovim', {
-   \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-  " (Optional) Multi-entry selection UI.
-	Plug 'junegunn/fzf'
-
-
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-	Plug 'mfussenegger/nvim-dap'
-	Plug 'nvim-lua/plenary.nvim'
+	" Prettier format on save
+	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+	vmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
 
 	" Terminal
 	Plug 'akinsho/toggleterm.nvim'
-
-	" LSP
-	Plug 'prabirshrestha/vim-lsp'
 
 	" Auto close pairs
 	Plug('cohama/lexima.vim')
@@ -88,6 +64,7 @@ call plug#end()
 
 lua require('terminal')
 
+set background=dark
 colorscheme badwolf
 
 " Line numbers
@@ -118,3 +95,31 @@ cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
+
+" Transparency (or blackness)
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=none 
+hi Normal guibg=NONE ctermbg=NONE
+
+" Speed up VIM
+set timeoutlen=1000
+set ttimeoutlen=0
+"set maptimeout=0
+
+" Map ENTER to insert mode
+nmap <C-m> <Esc>i
+
+" Show mode by cursor line color
+autocmd InsertEnter,InsertLeave * set cul!
+hi CursorLine ctermfg=green ctermbg=none
+hi clear CursorLineNR
+hi CursorLineNR cterm=none
+
+" Opn file explorer in new tab
+nnoremap we <Esc>:Texplore<CR>
+
+" Close buffer with qq
+nnoremap qq <Esc>:q<CR>
+inoremap qq <Esc>:q<CR>
+cnoremap qq <Esc>:q<CR>
+
