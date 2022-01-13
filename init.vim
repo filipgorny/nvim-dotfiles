@@ -25,8 +25,10 @@ call plug#begin()
 
   " Tabline
   Plug 'kdheepak/tabline.nvim'
-  Plug 'vim-airline/vim-airline'
-  
+
+	" Status bar
+  Plug 'powerline/powerline'
+
   " Ecma support
   Plug 'pangloss/vim-javascript'    " JavaScript support
   Plug 'leafgarland/typescript-vim' " TypeScript syntax
@@ -58,9 +60,6 @@ call plug#begin()
 
 	" LSP Colors
 	Plug 'folke/lsp-colors.nvim'
-
-	" Tagbar
-	Plug 'mhinz/vim-tagbar'
 call plug#end()
 
 lua require('terminal')
@@ -98,9 +97,9 @@ cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
 
 " Transparency (or blackness)
-"hi Normal guibg=NONE ctermbg=NONE
-"hi NonText ctermbg=none 
-"hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=none 
+hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
 set timeoutlen=1000
@@ -112,11 +111,12 @@ nmap <C-m> <Esc>i
 
 " Show mode by cursor line color
 autocmd InsertEnter,InsertLeave * set cul!
+hi CursorLine ctermfg=green ctermbg=none
+hi clear CursorLineNR
+hi CursorLineNR cterm=none
 
 " Opn file explorer in new tab
 nnoremap we <Esc>:Texplore<CR>
-inoremap we <Esc>:Texplore<CR>
-cnoremap we <Esc>:Texplore<CR>
 
 " Close buffer with qq
 nnoremap qq <Esc>:q<CR>
