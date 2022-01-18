@@ -7,9 +7,21 @@ set shiftwidth=2
 
 call plug#begin()
   " File tree
-	highlight VertSplit ctermbg=NONE
-	highlight VertSplit ctermfg=NONE
-	highlight VertSplit cterm=NONE
+  "Plug 'preservim/nerdtree'
+  "Plug 'ryanoasis/vim-devicons'
+  "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  " Start NERDTree and put the cursor back in the other window.
+  "autocmd VimEnter * NERDTree | wincmd p
+  " Close the tab if NERDTree is the only window remaining in it.
+  " autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+  " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+  " autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+  "  \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+	"let NERDTreeMinimalUI=1
+	"
+	"highlight VertSplit ctermbg=NONE
+	"highlight VertSplit ctermfg=NONE
+	"highlight VertSplit cterm=NONE
 
   " Tabline
   Plug 'kdheepak/tabline.nvim'
@@ -110,3 +122,7 @@ cnoremap qq <Esc>:q<CR>
 
 " NETRW settings
 set autochdir
+
+" Map switch tab
+noremap <C-Right> <Esc>:tabnext<CR>
+noremap <C-Left> <Esc>:tabprevious<CR>
