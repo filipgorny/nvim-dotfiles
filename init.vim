@@ -57,6 +57,9 @@ call plug#begin()
 
 	" LSP Colors
 	Plug 'folke/lsp-colors.nvim'
+
+	" NNN
+  Plug 'mcchrish/nnn.vim'
 call plug#end()
 
 lua require('terminal')
@@ -126,3 +129,7 @@ set autochdir
 " Map switch tab
 noremap <C-Right> <Esc>:tabnext<CR>
 noremap <C-Left> <Esc>:tabprevious<CR>
+
+" Undo
+nnoremap <c-z> :u<CR>      " Avoid using this**
+inoremap <c-z> <c-o>:u<CR>
