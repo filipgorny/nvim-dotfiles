@@ -32,7 +32,7 @@ call plug#begin()
   Plug 'neovim/nvim-lspconfig'
 
   " Copilot
-  " Plug 'github/copilot.vim'
+  Plug 'github/copilot.vim'
 
 	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -60,6 +60,10 @@ call plug#begin()
 
 	" NNN
 	Plug 'mcchrish/nnn.vim'
+	" Exit Vim if NnnExplorer is the only window remaining in the only tab.
+	autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
+	" Close the tab if NnnExplorer is the only window remaining in it.
+	autocmd BufEnter * if winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
 
 	" Vim-go 
 	" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -80,14 +84,16 @@ set fillchars+=vert:\
 
 " Remap jj to escape
 imap jj <Esc>
+imap jk <Esc>
 
 " Save file after each edit
 inoremap <Esc> <Esc>:w<CR>
 inoremap jj <Esc>:w<CR>
+inoremap jk <Esc>:w<CR>
 
 " Switch buffers with tab
-nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+nnoremap  <silent> <M-w>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <M-q>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 " Navigation in insert mode
 inoremap <C-h> <Left>
@@ -105,7 +111,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-set timeoutlen=1000
+set timeoutlen=250
 set ttimeoutlen=0
 "set maptimeout=0
 
@@ -130,9 +136,16 @@ cnoremap qq <Esc>:q<CR>
 set autochdir
 
 " Map switch tab
-noremap <C-Right> <Esc>:tabnext<CR>
-noremap <C-Left> <Esc>:tabprevious<CR>
+noremap <M-k> <Esc>:tabnext<CR>
+noremap <M-j> <Esc>:tabprevious<CR>
 
 " Undo
 nnoremap <c-z> :u<CR>      " Avoid using this**
 inoremap <c-z> <c-o>:u<CR>
+
+" Nnn explorer key mapping
+nnoremap <M-e> :NnnExplorer<CR>
+" use the same n³ session within a vim session
+let g:nnn#session = 'local'
+" use the same n³ session everywhere (including outside vim)
+let g:nnn#session = 'global'
