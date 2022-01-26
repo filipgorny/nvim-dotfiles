@@ -59,7 +59,10 @@ call plug#begin()
 	Plug 'folke/lsp-colors.nvim'
 
 	" NNN
-  Plug 'mcchrish/nnn.vim'
+	Plug 'mcchrish/nnn.vim'
+
+	" Vim-go 
+	" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 lua require('terminal')
