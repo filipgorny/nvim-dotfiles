@@ -66,7 +66,7 @@ call plug#begin()
 	autocmd BufEnter * if winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
 
 	" Vim-go 
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  "	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 lua require('terminal')
