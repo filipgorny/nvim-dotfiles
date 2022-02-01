@@ -108,6 +108,11 @@ cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
+nnoremap <C-h> <Left>
+nnoremap <C-j> <Down>
+nnoremap <C-k> <Up>
+nnoremap <C-l> <Right>
+
 
 " Transparency (or blackness)
 hi Normal guibg=NONE ctermbg=NONE
@@ -153,3 +158,13 @@ nnoremap <M-e> :NnnExplorer<CR>
 let g:nnn#session = 'local'
 " use the same n³ session everywhere (including outside vim)
 let g:nnn#session = 'global'
+
+" Netrw mapping
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+    noremap <buffer> e <CR>
+endfunction
