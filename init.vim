@@ -145,8 +145,8 @@ cnoremap qq <Esc>:q<CR>
 set autochdir
 
 " Map switch tab
-noremap <M-k> <Esc>:tabnext<CR>
-noremap <M-j> <Esc>:tabprevious<CR>
+noremap <M-j> <Esc>:tabnext<CR>
+noremap <M-k> <Esc>:tabprevious<CR>
 
 " Undo
 nnoremap <c-z> :u<CR>      " Avoid using this**
@@ -159,7 +159,9 @@ let g:nnn#session = 'local'
 " use the same n³ session everywhere (including outside vim)
 let g:nnn#session = 'global'
 
-" Netrw mapping
+" Netrw
+let g:netrw_liststyle=3
+
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
