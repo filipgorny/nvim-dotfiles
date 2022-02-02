@@ -120,11 +120,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-<<<<<<< HEAD
 set timeoutlen=250
-=======
-set timeoutlen=300
->>>>>>> e34cafa (Copilot enabled)
 set ttimeoutlen=0
 "set maptimeout=0
 
