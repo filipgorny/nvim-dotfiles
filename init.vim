@@ -120,7 +120,11 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
+<<<<<<< HEAD
 set timeoutlen=250
+=======
+set timeoutlen=300
+>>>>>>> e34cafa (Copilot enabled)
 set ttimeoutlen=0
 "set maptimeout=0
 
@@ -151,13 +155,6 @@ noremap <M-k> <Esc>:tabprevious<CR>
 " Undo
 nnoremap <c-z> :u<CR>      " Avoid using this**
 inoremap <c-z> <c-o>:u<CR>
-
-" Nnn explorer key mapping
-nnoremap <M-e> :NnnExplorer<CR>
-" use the same n³ session within a vim session
-let g:nnn#session = 'local'
-" use the same n³ session everywhere (including outside vim)
-let g:nnn#session = 'global'
 
 " Netrw
 let g:netrw_liststyle=3
