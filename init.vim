@@ -71,6 +71,9 @@ call plug#begin()
 	" Nvim tree
 	Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+
+	" Vim wiki
+	Plug 'vimwiki/vimwiki'
 call plug#end()
 
 lua require('terminal')
@@ -120,7 +123,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-set timeoutlen=250
+set timeoutlen=300
 set ttimeoutlen=0
 "set maptimeout=0
 
@@ -153,7 +156,10 @@ nnoremap <c-z> :u<CR>      " Avoid using this**
 inoremap <c-z> <c-o>:u<CR>
 
 " Netrw
-let g:netrw_liststyle=3
+let g:netrw_liststyle=1
+let g:netrw_keepdir = 0
+let g:netrw_banner = 0
+let g:netrw_sort = 2
 
 augroup netrw_mapping
     autocmd!
@@ -161,5 +167,28 @@ augroup netrw_mapping
 augroup END
 
 function! NetrwMapping()
-    noremap <buffer> e <CR>
+		nmap <Backspace> gg<CR>
+		nmap <CR> <CR>jj
+		nmap l <CR>jj
+		nmap h gg<CR>
 endfunction
+
+" Rename the variable
+function! Rnvar()
+  let word_to_replace = expand("<cword>")
+  let replacement = input("new name: ")
+  execute '%s/\(\W\)' . word_to_replace . '\(\W\)/\1' . replacement . '\2/gc'
+endfunction
+
+nnoremap rs <Esc>:call Rnvar()<CR>
+
+" Select all
+nnoremap <C-a> <Esc>ggVG
+
+" Open nvim config
+nnoremap <Leader>vc :e ~/.config/nvim/init.vim<CR>
+
+" Go to start of the line
+nnoremap 1 <Esc>0
+" Go to end of the line
+nnoremap 2 <Esc>$
