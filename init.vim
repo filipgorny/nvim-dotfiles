@@ -123,7 +123,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-set timeoutlen=300
+set timeoutlen=350
 set ttimeoutlen=0
 "set maptimeout=0
 
@@ -169,8 +169,6 @@ augroup END
 function! NetrwMapping()
 		nmap <Backspace> gg<CR>
 		nmap <CR> <CR>jj
-		nmap l <CR>jj
-		nmap h gg<CR>
 endfunction
 
 " Rename the variable
@@ -189,6 +187,21 @@ nnoremap <C-a> <Esc>ggVG
 nnoremap <Leader>vc :e ~/.config/nvim/init.vim<CR>
 
 " Go to start of the line
-nnoremap 1 <Esc>0
-" Go to end of the line
-nnoremap 2 <Esc>$
+nnoremap fl $
+nnoremap fh 0
+nnoremap fj L
+nnoremap fk H
+
+" Use system clipboard
+set clipboard+=unnamedplus
+
+" Go to and exit from insert mode using space
+nnoremap <Space> <Esc>i
+inoremap <Space><Space> <Esc>
+inoremap <C-Space> <Esc>
+
+" WIldmode
+set wildmode=longest,list,full
+
+" Comment current line
+nnoremap // I// <ESC>
