@@ -123,7 +123,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-set timeoutlen=350
+set timeoutlen=300
 set ttimeoutlen=0
 "set maptimeout=0
 
