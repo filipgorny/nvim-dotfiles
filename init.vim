@@ -76,7 +76,6 @@ call plug#begin()
 	Plug 'vimwiki/vimwiki'
 
     Plug 'kyazdani42/nvim-tree.lua'
->>>>j>>> 04e05c8 (c)
 call plug#end()
 
 lua require('terminal')
