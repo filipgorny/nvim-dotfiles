@@ -2,8 +2,9 @@ syntax on
 filetype plugin indent on
 set encoding=utf-8
 
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 call plug#begin()
   " File tree
@@ -36,7 +37,7 @@ call plug#begin()
 
 	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular']
+	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular', 'coc-clangd']
 
 	" Add missing imports on save (GO)
 	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
@@ -70,10 +71,14 @@ call plug#begin()
 	
 	" Nvim tree
 	Plug 'kyazdani42/nvim-web-devicons' " for file icons
+<<<<<<< HEAD
   Plug 'kyazdani42/nvim-tree.lua'
 
 	" Vim wiki
 	Plug 'vimwiki/vimwiki'
+=======
+    Plug 'kyazdani42/nvim-tree.lua'
+>>>>>>> 04e05c8 (c)
 call plug#end()
 
 lua require('terminal')
@@ -205,3 +210,10 @@ set wildmode=longest,list,full
 
 " Comment current line
 nnoremap // I// <ESC>
+
+nnoremap <leader>vc :e ~/.config/nvim/init.vim<CR>
+
+" Beginning and end of line
+nnoremap - 0
+nnoremap = $
+
