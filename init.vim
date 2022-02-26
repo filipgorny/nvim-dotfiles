@@ -71,14 +71,12 @@ call plug#begin()
 	
 	" Nvim tree
 	Plug 'kyazdani42/nvim-web-devicons' " for file icons
-<<<<<<< HEAD
-  Plug 'kyazdani42/nvim-tree.lua'
 
 	" Vim wiki
 	Plug 'vimwiki/vimwiki'
-=======
+
     Plug 'kyazdani42/nvim-tree.lua'
->>>>>>> 04e05c8 (c)
+>>>>j>>> 04e05c8 (c)
 call plug#end()
 
 lua require('terminal')
