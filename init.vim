@@ -2,8 +2,8 @@ syntax on
 filetype plugin indent on
 set encoding=utf-8
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 call plug#begin()
@@ -76,12 +76,27 @@ call plug#begin()
 	Plug 'vimwiki/vimwiki'
 
     Plug 'kyazdani42/nvim-tree.lua'
+
+    " Themes
+    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'rafi/awesome-vim-colorschemes'
+
+    " React
+    "Plug 'peitalin/vim-jsx-typescript'
+    "autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+"------------------------ VIM TSX ------------------------
+" by default, if you open tsx file, neovim does not show syntax colors
+" vim-tsx will do all the coloring for jsx in the .tsx file
+Plug 'ianks/vim-tsx'
 call plug#end()
 
 lua require('terminal')
 
 set background=dark
-colorscheme badwolf
+colorscheme molokayo
 
 " Line numbers
 set relativenumber
@@ -99,24 +114,24 @@ imap jk <Esc>
 inoremap <Esc> <Esc>:w<CR>
 inoremap jj <Esc>:w<CR>
 inoremap jk <Esc>:w<CR>
-
+ 
 " Switch buffers with tab
 nnoremap  <silent> <M-w>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <M-q>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 " Navigation in insert mode
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-cnoremap <C-h> <Left>
-cnoremap <C-j> <Down>
-cnoremap <C-k> <Up>
-cnoremap <C-l> <Right>
-nnoremap <C-h> <Left>
-nnoremap <C-j> <Down>
-nnoremap <C-k> <Up>
-nnoremap <C-l> <Right>
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+cnoremap <M-h> <Left>
+cnoremap <M-j> <Down>
+cnoremap <M-k> <Up>
+cnoremap <M-l> <Right>
+nnoremap <M-h> <Left>
+nnoremap <M-j> <Down>
+nnoremap <M-k> <Up>
+nnoremap <M-l> <Right>
 
 
 " Transparency (or blackness)
@@ -125,7 +140,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-set timeoutlen=300
+set timeoutlen=250
 set ttimeoutlen=0
 "set maptimeout=0
 
@@ -146,12 +161,20 @@ nnoremap qq <Esc>:q<CR>
 inoremap qq <Esc>:q<CR>
 cnoremap qq <Esc>:q<CR>
 
+" Save with wq
+nnoremap wq <Esc>:w<CR>
+inoremap wq <Esc>:w<CR>
+cnoremap wq <Esc>:w<CR>
+
 " NETRW settings
 set autochdir
 
 " Map switch tab
-noremap <M-j> <Esc>:tabnext<CR>
-noremap <M-k> <Esc>:tabprevious<CR>
+nnoremap <C-j> <Esc>:tabnext<CR>
+nnoremap <C-k> <Esc>:tabprevious<CR>
+inoremap <C-j> <Esc>:tabnext<CR>
+inoremap <C-k> <Esc>:tabprevious<CR>
+
 
 " Undo
 nnoremap <c-z> :u<CR>      " Avoid using this**
@@ -214,3 +237,10 @@ nnoremap <leader>vc :e ~/.config/nvim/init.vim<CR>
 nnoremap - 0
 nnoremap = $
 
+" Backspace to enter insert mode when pressed in normal
+nnoremap <BS> i<BS><Esc>
+
+" Add empty line
+nnoremap wa <Esc><S-a><CR><Esc>k<CR>
+
+nnoremap ll <Right><Right> 
