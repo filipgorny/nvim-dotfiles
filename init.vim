@@ -96,7 +96,7 @@ call plug#end()
 lua require('terminal')
 
 set background=dark
-colorscheme molokayo
+colorscheme PaperColor
 
 " Line numbers
 set relativenumber
@@ -140,7 +140,7 @@ hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
 
 " Speed up VIM
-set timeoutlen=250
+set timeoutlen=185
 set ttimeoutlen=0
 "set maptimeout=0
 
