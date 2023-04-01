@@ -37,7 +37,7 @@ call plug#begin()
 
 	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular', 'coc-clangd']
+	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-graphql', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular', 'coc-clangd', '@yaegassy/coc-tailwindcss3']
 
 	" Add missing imports on save (GO)
 	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
@@ -46,6 +46,7 @@ call plug#begin()
 	command! -nargs=0 Prettier :CocCommand prettier.formatFile
 	vmap <leader>f  <Plug>(coc-format-selected)
 	nmap <leader>f  <Plug>(coc-format-selected)
+
 
 	" Terminal
 	Plug 'akinsho/toggleterm.nvim'
@@ -87,16 +88,24 @@ call plug#begin()
     "Plug 'peitalin/vim-jsx-typescript'
     "autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" vim-tsx will do all the coloring for jsx in the .tsx file
-Plug 'ianks/vim-tsx'
+  "------------------------ VIM TSX ------------------------
+  " by default, if you open tsx file, neovim does not show syntax colors
+  " vim-tsx will do all the coloring for jsx in the .tsx file
+  Plug 'ianks/vim-tsx'
+
+  " airline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
+  Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 lua require('terminal')
+lua require('treebrowser')
 
 set background=dark
-colorscheme PaperColor
+colorscheme badwolf
 
 " Line numbers
 set relativenumber
@@ -149,9 +158,9 @@ nmap <C-m> <Esc>i
 
 " Show mode by cursor line color
 autocmd InsertEnter,InsertLeave * set cul!
-hi CursorLine ctermfg=green ctermbg=none
+hi CursorLine ctermfg=green ctermbg=black
 hi clear CursorLineNR
-hi CursorLineNR cterm=none
+hi CursorLineNR ctermbg=darkgray
 
 " Opn file explorer in new tab
 nnoremap we <Esc>:Texplore<CR>
@@ -244,3 +253,4 @@ nnoremap <BS> i<BS><Esc>
 nnoremap wa <Esc><S-a><CR><Esc>k<CR>
 
 nnoremap ll <Right><Right> 
+
