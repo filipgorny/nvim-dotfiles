@@ -170,10 +170,20 @@ nnoremap qq <Esc>:q<CR>
 inoremap qq <Esc>:q<CR>
 cnoremap qq <Esc>:q<CR>
 
+function! SaveMethod()
+  CocCommand prettier.formatFile
+  write
+endfunction
+
+
 " Save with wq
-nnoremap wq <Esc>:w<CR>
-inoremap wq <Esc>:w<CR>
-cnoremap wq <Esc>:w<CR>
+nnoremap wq <Esc>:call SaveMethod()<CR>
+inoremap wq <Esc>:call SaveMethod()<CR>
+cnoremap wq <Esc>:call SaveMethod()<CR>
+nnoremap fd <Esc>:call SaveMethod()<CR>
+inoremap fd <Esc>:call SaveMethod()<CR>
+cnoremap fd <Esc>:call SaveMethod()<CR>
+
 
 " NETRW settings
 set autochdir
