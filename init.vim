@@ -264,5 +264,10 @@ nnoremap wa <Esc><S-a><CR><Esc>k<CR>
 
 nnoremap ll <Right><Right> 
 
-" Enter to autocomplete
+
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+nnoremap qa :%bd|e\#
+inoremap qa :%bd|e\#
+cnoremap qa :%bd|e\#
+
