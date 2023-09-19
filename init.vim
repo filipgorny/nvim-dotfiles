@@ -99,13 +99,14 @@ call plug#begin()
 
   Plug 'tpope/vim-fugitive'
 
+  Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 lua require('terminal')
 lua require('treebrowser')
 
 set background=dark
-colorscheme badwolf
+colorscheme PaperColor
 
 " Line numbers
 set relativenumber
