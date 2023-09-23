@@ -31,10 +31,6 @@ call plug#begin()
   Plug 'pangloss/vim-javascript'    " JavaScript support
   Plug 'leafgarland/typescript-vim' " TypeScript syntax
   Plug 'neovim/nvim-lspconfig'
-
-  " Copilot
-  Plug 'github/copilot.vim'
-
 	" Coc	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-yaml', 'coc-tailwindcss', 'coc-svg', 'coc-sql', 'coc-stylelintplus', 'coc-sh', 'coc-python', 'coc-prisma', 'coc-prettier', 'coc-phpls', 'coc-html', 'coc-go', 'coc-git', 'coc-gist', 'coc-eslint', 'coc-css', 'coc-angular', 'coc-clangd', '@yaegassy/coc-tailwindcss3']
@@ -52,7 +48,7 @@ call plug#begin()
 	Plug 'akinsho/toggleterm.nvim'
 
 	" Auto close pairs
-	Plug('cohama/lexima.vim')
+	"Plug('cohama/lexima.vim')
 
 	" Emojis
 	Plug 'junegunn/vim-emoji'
@@ -74,7 +70,6 @@ call plug#begin()
 	Plug 'kyazdani42/nvim-web-devicons' " for file icons
 
 	" Vim wiki
-	Plug 'vimwiki/vimwiki'
 
     Plug 'kyazdani42/nvim-tree.lua'
 
@@ -100,6 +95,11 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
 
   Plug 'NLKNguyen/papercolor-theme'
+  " Modify opening and closing tab
+  "Plug 'tpope/vim-surround'
+
+  " Copilot
+  Plug 'github/copilot.vim'
 call plug#end()
 
 lua require('terminal')
@@ -166,10 +166,8 @@ hi CursorLineNR ctermbg=darkgray
 " Opn file explorer in new tab
 nnoremap we <Esc>:Texplore<CR>
 
-" Close buffer with qq
-nnoremap qq <Esc>:q<CR>
-inoremap qq <Esc>:q<CR>
-cnoremap qq <Esc>:q<CR>
+" Close buffer with q  
+nnoremap Q <Esc>:q<CR>
 
 function! SaveMethod()
   CocCommand prettier.formatFile
